@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  bill: 
+  report_id: MyString
+  author: MyString
+  title: MyString
+
+two:
+  bill: 
+  report_id: MyString
+  author: MyString
+  title: MyString
