@@ -1,0 +1,54 @@
+%html{:lang => "en", "xml:lang" => "en", :xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+    %script{ :src => 'http://www.google.com/jsapi', :type => 'text/javascript' }
+    :javascript
+      $(document).ready(function() {
+        $.fn.resizeComponents = function() {
+          var width = $(window).width();
+          var target = 1026;
+          var padding = 25;
+          var correctMargin = 0;
+          if (width > target + padding * 2) {
+            correctMargin = (width - target - padding * 2) / 2;
+            $('#main').width(target);
+          } else {
+            correctMargin = 0;
+            $('#main').width(width - padding * 2);
+          }
+          $('#header').css('margin-left', (correctMargin + padding) + 'px');
+          $('#navBar').css('padding-left', (correctMargin + padding) + 'px');
+          $('#main').css('margin-left', correctMargin + 'px');
+        }
+        $.fn.resizeComponents();
+        $("#navBar table tbody tr td").hover(function() {
+          $(this).addClass("hover");
+        }, function() {
+          $(this).removeClass("hover");
+        });
+        $(window).resize(function() {
+          $.fn.resizeComponents();
+        });
+      });
+  %body
+    #topBanner
+      #header
+        %img{:alt => "SG Logo", :src => "/assets/logo.png", :style => "height:60px; float:left; padding:0; margin:0;"}/
+        %span#titleTop The North Carolina School of Science and Mathematics
+        %br/
+        %span#titleBottom Student Government
+    #navBar
+      %table
+        %tbody
+          %tr
+            - td_active('Home', root_path)
+            - td_active('Calendar', calendar_path)
+            - td_active('Clubs', clubs_path)
+            - td_active('Petitions', petitions_path)
+            - td_active('Bills', bills_path)
+            - td_active('Contact', emails_path)
+            - if admin_signed_in?
+              %td= link_to 'Logout', destroy_admin_session_path, method: :delete
+    #main
+      = yield

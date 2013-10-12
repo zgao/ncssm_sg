@@ -1,0 +1,80 @@
+/* TOC */
+/* Title */
+
+body {
+    margin: 0px;
+    width: 1366px;
+    background-color: #404040;
+}
+
+/* sec: Title */
+#titleTop, #titleBottom {
+    display: inline;
+    text-shadow: -1px 0 #B2B2B2, 0 1px #B2B2B2, 1px 0 #B2B2B2, 0 -1px #B2B2B2;
+    font-family: Georgia, serif;
+    font-variant: small-caps;
+    font-weight: bold;
+}
+#titleTop {
+    font-size: 12px;
+}
+#titleBottom {
+    font-size: 36px;
+}
+
+#header {
+    display: block;
+    color: #FFFFFF;
+    padding: 16px 0px 16px 0px;
+    width: 500px;
+    min-width: 500px;
+    margin-left: 183px;
+    margin-right: 183px;
+}
+
+#topBanner {
+    vertical-align: middle;
+    text-align: center;
+    background-color: #29088A;
+    height: 92px;
+    width: 100%;
+    margin-top: 0px;
+    padding-top: 0px;
+    background-image: linear-gradient(
+        rgb(160, 160, 160) 0%,
+        rgb(203, 203, 203) 100%
+    );
+}
+
+#navBar {
+    background-color: #404040;
+    height: 49px;
+    padding-left: 183px;
+    font-family: Georgia, sans-serif;
+}
+#navBar table {
+    color: #FFFFFF;
+    height: 49px;
+}
+#navBar table tbody tr td {
+    padding: 15px 12px 15px 12px;
+    height: 49px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.active {
+    color: #FFFFFF;
+    background-color: #000000;
+}
+.hover {
+    color: #000000;
+    background-color: #FFFFFF;
+}
+
+#main {
+    margin-left: 170px;
+    width: 1026px;
+    min-height: 500px;
+    background-color: #FFFFFF;
+    border-radius: 13px;
+}

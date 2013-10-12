@@ -1,0 +1,64 @@
+.center
+  %h2= "#{@bill.bill_id}: #{@bill.title}"
+  %h3= "Sponsors: #{@bill.sponsors}"
+
+%hr
+
+.well
+  = @bill.summary
+
+#new_report.modal.fade{ :tabindex => '-1', :role => 'dialog', :'aria-labelledby' => 'new_report_label', :'aria-hidden' => 'true' }
+  .modal-dialog
+    .modal-content
+      = form_for([@bill, @report], html: { class: 'form-horizontal' }) do |f|
+        .modal-header
+          %button.close{ :type => 'button', :'data-dismiss' => 'modal', :'aria-hidden' => 'true' } &times;
+          %h4#new_report_label.modal-title New report
+        .modal-body
+          .form-group
+            = f.label :report_id, class: 'col-lg-4 control-label'
+            .col-lg-5
+              = f.text_field :report_id, class: 'form-control'
+          .form-group
+            = f.label :title, class: 'col-lg-4 control-label'
+            .col-lg-5
+              = f.text_field :title, class: 'form-control'
+          .form-group
+            = f.label :author, class: 'col-lg-4 control-label'
+            .col-lg-5
+              = f.text_field :author, class: 'form-control'
+          .form-group
+            = f.label :report_text, class: 'col-lg-4 control-label'
+            .col-lg-5
+              = f.file_field :report_text
+        .modal-footer
+          %button.btn.btn-danger{ :type => 'button', :'data-dismiss' => 'modal' } Close
+          = f.submit 'Save', class: 'btn btn-success'
+
+#accordion.panel-group
+  .panel.panel-default
+    .panel-heading
+      %h4.panel-title
+        %a.accordion-toggle{ :'data-toggle' => 'collapse', :'data-parent' => '#accordion', :href => '#reports' }
+          Bill reports
+    #reports.panel-collapse.collapse.in
+      .panel-body
+        - @bill.reports.each do |report|
+          = link_to report.title, report.report_text.url
+          = ", by #{report.author} on #{report.created_at.to_date}"
+          %br/
+
+        %br/
+
+        - if admin_signed_in?
+          %a.btn.btn-primary{ :'data-toggle' => 'modal', :href => '#new_report' } New report
+          /= link_to 'New report', new_bill_report_path(@bill), class: 'btn btn-success'
+  .panel.panel-default
+    .panel-heading
+      %h4.panel-title
+        %a.accordion-toggle{ :'data-toggle' => 'collapse', :'data-parent' => '#accordion', :href => '#gdoc' }
+          Full text
+    #gdoc.panel-collapse.collapse
+      .panel-body
+        .well
+          = render partial: 'gdoc', locals: { gdoc_location: @bill.gdoc_location }

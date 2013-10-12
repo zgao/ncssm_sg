@@ -1,0 +1,33 @@
+= form_for bill, html: { class: 'form-horizontal', role: 'form' } do |f|
+  - if bill.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(bill.errors.count, "error")} prohibited this bill from being saved"
+      %ul
+        - bill.errors.full_messages.each do |msg|
+          %li= msg
+  .form-group
+    = f.label :bill_id, class: 'col-lg-2 control-label'
+    .col-lg-8
+      = f.text_field :bill_id, class: 'form-control'
+  .form-group
+    = f.label :title, class: 'col-lg-2 control-label'
+    .col-lg-8
+      = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :sponsors, class: 'col-lg-2 control-label'
+    .col-lg-8
+      = f.text_field :sponsors, class: 'form-control'
+  .form-group
+    = f.label :status, class: 'col-lg-2 control-label'
+    .col-lg-8
+      = f.select :status, ['Proposed', '1st reading', '2nd reading', 'Rejected', 'Accepted'], {}, class: 'form-control'
+  .form-group
+    = f.label :summary, class: 'col-lg-2 control-label'
+    .col-lg-8
+      = f.text_area :summary, class: 'form-control', rows: 4
+  .form-group
+    = f.label :bill_text, class: 'col-lg-2 control-label'
+    .col-lg-8
+      = f.file_field :bill_text
+  .form-group
+    .col-lg-offset-2.col-lg-8= f.submit 'Upload', class: 'btn btn-success'

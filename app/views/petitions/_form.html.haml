@@ -1,0 +1,25 @@
+= form_for petition, html: { class: 'form-horizontal', role: 'form' } do |f|
+  - if petition.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(petition.errors.count, "error")} prohibited this bill from being saved"
+      %ul
+        - petition.errors.full_messages.each do |msg|
+          %li= msg
+  .form-group
+    = f.label :title, class: 'col-lg-3 control-label'
+    .col-lg-7
+      = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :body, class: 'col-lg-3 control-label'
+    .col-lg-7
+      = f.text_area :body, class: 'form-control', rows: 6
+  .form-group
+    %label.col-lg-3.control-label{ for: 'name' } Your name
+    .col-lg-7
+      %input#name.form-control{ name: 'name' }
+  .form-group
+    %label.col-lg-3.control-label{ for: 'hall' } Your hall
+    .col-lg-7
+      %input#name.form-control{ name: 'hall' }
+  .form-group
+    .col-lg-offset-3.col-lg-7= f.submit 'Submit', class: 'btn btn-primary'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130827030310) do
+ActiveRecord::Schema.define(:version => 20130930084551) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -42,14 +42,17 @@ ActiveRecord::Schema.define(:version => 20130827030310) do
     t.string   "bill_text_content_type"
     t.integer  "bill_text_file_size"
     t.datetime "bill_text_updated_at"
+    t.string   "summary"
+    t.string   "gdoc_location"
   end
 
   create_table "petitions", :force => true do |t|
     t.string   "title"
     t.string   "body"
     t.integer  "threshold"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "signatures_count"
   end
 
   create_table "reports", :force => true do |t|
@@ -66,6 +69,17 @@ ActiveRecord::Schema.define(:version => 20130827030310) do
   end
 
   add_index "reports", ["bill_id"], :name => "index_reports_on_bill_id"
+
+  create_table "signatures", :force => true do |t|
+    t.integer  "petition_id"
+    t.string   "name"
+    t.string   "hall"
+    t.string   "comment"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "signatures", ["petition_id"], :name => "index_signatures_on_petition_id"
 
   create_table "votes", :force => true do |t|
     t.integer  "petition_id"

@@ -1,0 +1,34 @@
+#new_signature.modal.fade{ :tabindex => '-1', :role => 'dialog', :'aria-labelledby' => 'new_signature_label', :'aria-hidden' => 'true' }
+  .modal-dialog
+    .modal-content
+      = form_for([@petition, @signature], html: { class: 'form-horizontal' }) do |f|
+        .modal-header
+          %button.close{ :type => 'button', :'data-dismiss' => 'modal', :'aria-hidden' => 'true' } &times;
+          %h4#new_signature_label.modal-title Sign the petition!
+        .modal-body
+          .form-group
+            = f.label :name, class: 'col-lg-4 control-label'
+            .col-lg-5
+              = f.text_field :name, class: 'form-control'
+          .form-group
+            = f.label :hall, class: 'col-lg-4 control-label'
+            .col-lg-5
+              = f.text_field :hall, class: 'form-control'
+        .modal-footer
+          %button.btn.btn-danger{ :'data-dismiss' => 'modal' } Close
+          = f.submit 'Sign', class: 'btn btn-primary'
+
+.center
+  %h2= @petition.title
+  %h3
+    = "#{pluralize(@petition.signatures_count, "signature")} so far."
+    %a{ :'data-toggle' => 'modal', :href => '#new_signature' } Sign it!
+
+%hr
+
+.well
+  = @petition.body
+
+%ol
+  - @petition.signatures.each do |sig|
+    %li= "#{sig.name} from #{sig.hall}"

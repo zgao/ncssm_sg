@@ -1,0 +1,26 @@
+.center
+  %h2 All bills
+
+%hr
+
+%table.table
+  %thead
+    %tr
+      %th ID
+      %th Bill
+      %th Sponsors
+      %th Status
+      %th Date entered
+      %th Last updated
+  %tbody
+    - @bills.each do |bill|
+      %tr
+        %td= bill.bill_id
+        %td= link_to bill.title, bill
+        %td= bill.sponsors
+        %td= bill.status
+        %td= bill.created_at
+        %td= bill.updated_at
+
+- if admin_signed_in?
+  = link_to 'New bill', new_bill_path, class: 'btn btn-success'

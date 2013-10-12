@@ -1,0 +1,19 @@
+.center
+  %h2 Petitions
+
+%hr
+
+.center
+  - @petitions.each do |petition|
+    - signature_text = pluralize(petition.signatures_count, "signature") + ": "
+    - if petition.signatures_count > petition.threshold
+      %br
+        = signature_text
+        = link_to petition.title, petition_path(petition)
+    - else
+      = signature_text
+      = link_to petition.title, petition_path(petition)
+
+%br/
+
+= link_to 'Start petition', new_petition_path, class: 'btn btn-primary'

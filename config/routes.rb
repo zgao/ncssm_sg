@@ -1,5 +1,19 @@
 Sg::Application.routes.draw do
+  root to: 'home#index'
+
   devise_for :admins
+
+  resources :bills do
+    resources :reports
+  end
+  resources :petitions do
+    resources :signatures
+  end
+
+  match 'calendar', to: 'calendar#index', via: :get, as: 'calendar'
+  match 'clubs', to: 'clubs#index', via: :get, as: 'clubs'
+  match 'emails', to: 'emails#index', via: :get, as: 'emails'
+  match 'emails/submit', to: 'emails#submit', via: :post, as: 'emails_submit'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

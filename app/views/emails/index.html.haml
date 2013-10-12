@@ -1,0 +1,22 @@
+.center
+  %h2 Contact us!
+
+%hr
+
+.form-parent
+  %form.form-horizontal{ :action => emails_submit_path, :method => 'post' }
+    .form-group
+      %label.col-lg-3.control-label{ for: 'name' } Your name
+      .col-lg-7
+        %input#name.form-control{ name: 'name' }
+    .form-group
+      %label.col-lg-3.control-label{ for: 'hall' } Your hall
+      .col-lg-7
+        %input#hall.form-control{ name: 'hall' }
+    .form-group
+      %label.col-lg-3.control-label{ for: 'message' } Your message
+      .col-lg-7
+        %textarea#message.form-control{ name: 'message', rows: '6' }
+    .form-group
+      .col-lg-offset-3.col-lg-7
+        = submit_tag 'Submit', class: 'btn btn-primary'
