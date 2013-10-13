@@ -14,7 +14,8 @@ gem 'aws-sdk'
 gem 'haml-rails'
 gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails', github: 'anjlab/bootstrap-rails'
 gem 'google-api-client'
-gem 'paperclip-googledrive'
+gem 'paperclip-googledrive', github: 'zgao/paperclip-googledrive'
+gem 'launchy'
 
 # Gems used only for assets and not required
 # in production environments by default.
