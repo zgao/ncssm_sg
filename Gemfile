@@ -16,6 +16,10 @@ gem 'google-api-client'
 gem 'paperclip-googledrive', github: 'zgao/paperclip-googledrive'
 gem 'launchy'
 
+group :development, :test do
+  gem 'sqlite3'
+end
+
 group :production do
   gem 'pg'
 end
