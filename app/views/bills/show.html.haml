@@ -61,4 +61,4 @@
     #gdoc.panel-collapse.collapse
       .panel-body
         .well
-          = render partial: 'gdoc', locals: { gdoc_location: @bill.gdoc_location }
+          = render partial: 'gdoc', locals: { bill_text_url: @bill.bill_text.url }
