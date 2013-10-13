@@ -193,6 +193,7 @@ DEPENDENCIES
   devise
   execjs
   google-api-client
+  haml
   haml-rails
   jquery-rails
   launchy
