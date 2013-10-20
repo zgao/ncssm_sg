@@ -4,7 +4,8 @@
 body {
     margin: 0px;
     /*width: 1366px;*/
-    background-color: #404040;
+    background-color: #252640;
+    color: #000000;
 }
 
 /* sec: Title */
@@ -41,13 +42,13 @@ body {
     margin-top: 0px;
     padding-top: 0px;
     background-image: linear-gradient(
-        rgb(160, 160, 160) 0%,
-        rgb(203, 203, 203) 100%
+        rgb(155, 155, 190) 0%,
+        rgb(213, 213, 223) 100%
     );
 }
 
 #navBar {
-    background-color: #404040;
+    background-color: #252640;
     height: 49px;
     padding-left: 183px;
     font-family: Georgia, sans-serif;

@@ -1,0 +1,8 @@
+.center
+  %h2= "Edit bill #{@bill.bill_id}"
+  %h3= @bill.title
+
+%hr
+
+= render 'form', bill: @bill
+

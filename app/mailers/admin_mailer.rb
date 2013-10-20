@@ -4,8 +4,9 @@ class AdminMailer < ActionMailer::Base
   def contact_us_email(email_subject, email_body)
     @email_subject = email_subject
     @email_body = email_body
-    Admin.all.each do |admin|
-      mail(to: admin.email, subject: @email_subject)
-    end
+    #Admin.all.each do |admin|
+      #mail(to: admin.email, subject: @email_subject)
+    #end
+    mail(to: 'sg@ncssm.edu', subject: @email_subject)
   end
 end

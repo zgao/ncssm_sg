@@ -9,4 +9,6 @@ class Report < ActiveRecord::Base
     }
 
   belongs_to :bill
+
+  validates_uniqueness_of :report_id
 end

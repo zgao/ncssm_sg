@@ -12,6 +12,8 @@
       %th Status
       %th Date entered
       %th Last updated
+      - if admin_signed_in?
+        %th Edit
   %tbody
     - @bills.each do |bill|
       %tr
@@ -19,8 +21,10 @@
         %td= link_to bill.title, bill
         %td= bill.sponsors
         %td= bill.status
-        %td= bill.created_at
-        %td= bill.updated_at
+        %td= bill.created_at.to_date
+        %td= bill.updated_at.to_date
+        - if admin_signed_in?
+          %td= link_to 'Edit', edit_bill_path(bill), class: 'btn btn-primary'
 
 - if admin_signed_in?
   = link_to 'New bill', new_bill_path, class: 'btn btn-success'

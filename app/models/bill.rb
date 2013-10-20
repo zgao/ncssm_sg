@@ -9,4 +9,6 @@ class Bill < ActiveRecord::Base
     }
 
   has_many :reports
+
+  validates_uniqueness_of :bill_id
 end
